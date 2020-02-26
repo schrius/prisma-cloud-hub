@@ -1,0 +1,54 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Resources: 
+  PrismaLambdaKiller: 
+    Type: "AWS::IAM::Role"
+    Properties: 
+      RoleName: "Lambda_Prisma_VPCKiller"
+      AssumeRolePolicyDocument: 
+        Version: "2012-10-17"
+        Statement: 
+          - 
+            Effect: "Allow"
+            Principal: 
+              Service:
+                - "lambda.amazonaws.com"
+            Action: 
+              - "sts:AssumeRole"
+      Path: "/"
+  RolePolicies: 
+    Type: "AWS::IAM::Policy"
+    Properties: 
+      PolicyName: "PrismaLambdaVPCTerminatorPolicy"
+      PolicyDocument: 
+        Version: "2012-10-17"
+        Statement: 
+          - 
+            Effect: "Allow"
+            Action:
+              - "logs:CreateLogStream"
+              - "logs:CreateLogGroup"
+              - "logs:PutLogEvents"
+              - "sqs:ReceiveMessage"
+              - "sqs:DeleteMessage"
+              - "sqs:GetQueueAttributes"
+            Resource: "*"
+          -
+            Effect: "Allow"
+            Action:
+              "sts:AssumeRole"
+            Resource: "arn:aws:iam::*:role/Prisma_VPC_Term_Role"
+      Roles: 
+        - 
+          Ref: "PrismaLambdaKiller"
+Outputs:
+  RoleName:
+    Value:
+      Ref: PrismaLambdaKiller
+  Arn:
+    Value:
+      Fn::GetAtt:
+      - PrismaLambdaKiller
+      - Arn
+  Region:
+    Value:
+      Ref: AWS::Region

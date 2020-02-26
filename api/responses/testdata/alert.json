@@ -1,0 +1,264 @@
+[
+    {
+        "id": "P-48311",
+        "status": "open",
+        "firstSeen": 1581390395080,
+        "lastSeen": 1581390395080,
+        "alertTime": 1581390395080,
+        "eventOccurred": 1581389178000,
+        "policy": {
+            "policyId": "4ae14eed-5a19-4afb-b75e-59ee1aaa89ca",
+            "policyType": "audit_event",
+            "systemDefault": false,
+            "remediable": false
+        },
+        "riskDetail": {
+            "riskScore": {
+                "score": 0,
+                "maxScore": 0
+            },
+            "rating": "n_a",
+            "score": "n_a"
+        },
+        "resource": {
+            "id": "RenewRole",
+            "name": "RenewRole",
+            "account": "dss",
+            "accountId": "958465719869",
+            "cloudAccountGroups": [],
+            "region": "AWS Ohio",
+            "regionId": "us-east-2",
+            "resourceType": "AUDIT_EVENT",
+            "data": {
+                "eventVersion": "1.05",
+                "userIdentity": {
+                    "type": "AssumedRole",
+                    "principalId": "AROAIFVZC4MOUVW2QVKVO:mforte",
+                    "arn": "arn:aws:sts::958465719869:assumed-role/OrganizationAccountAccessRole/mforte",
+                    "accountId": "958465719869"
+                },
+                "eventTime": "2020-02-11T02:46:18Z",
+                "eventSource": "signin.amazonaws.com",
+                "eventName": "RenewRole",
+                "awsRegion": "us-east-2",
+                "sourceIPAddress": "161.185.212.32",
+                "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36",
+                "requestParameters": null,
+                "responseElements": {
+                    "RenewRole": "Success"
+                },
+                "additionalEventData": {
+                    "RenewedBy": "arn:aws:iam::907984961736:user/mforte",
+                    "RedirectTo": "https://us-east-2.console.aws.amazon.com/rds/?\u0026isauthcode=true"
+                },
+                "eventID": "88e7c00b-7595-4ab1-8aba-e6bfd802b742",
+                "eventType": "AwsConsoleSignIn",
+                "recipientAccountId": "958465719869"
+            },
+            "cloudType": "aws"
+        },
+        "triggeredBy": "mforte",
+        "investigateOptions": {
+            "searchId": "d0363688-6999-46a6-855c-b4f47c12e95f",
+            "startTs": 1581216378000,
+            "endTs": 1581389178000
+        }
+    },
+    {
+        "id": "P-48310",
+        "status": "open",
+        "firstSeen": 1581386796095,
+        "lastSeen": 1581386796095,
+        "alertTime": 1581386796095,
+        "eventOccurred": 1581385573000,
+        "policy": {
+            "policyId": "4ae14eed-5a19-4afb-b75e-59ee1aaa89ca",
+            "policyType": "audit_event",
+            "systemDefault": false,
+            "remediable": false
+        },
+        "riskDetail": {
+            "riskScore": {
+                "score": 0,
+                "maxScore": 0
+            },
+            "rating": "n_a",
+            "score": "n_a"
+        },
+        "resource": {
+            "id": "RenewRole",
+            "name": "RenewRole",
+            "account": "dss",
+            "accountId": "958465719869",
+            "cloudAccountGroups": [],
+            "region": "AWS Ohio",
+            "regionId": "us-east-2",
+            "resourceType": "AUDIT_EVENT",
+            "data": {
+                "eventVersion": "1.05",
+                "userIdentity": {
+                    "type": "AssumedRole",
+                    "principalId": "AROAIFVZC4MOUVW2QVKVO:mforte",
+                    "arn": "arn:aws:sts::958465719869:assumed-role/OrganizationAccountAccessRole/mforte",
+                    "accountId": "958465719869"
+                },
+                "eventTime": "2020-02-11T01:46:13Z",
+                "eventSource": "signin.amazonaws.com",
+                "eventName": "RenewRole",
+                "awsRegion": "us-east-2",
+                "sourceIPAddress": "161.185.212.32",
+                "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36",
+                "requestParameters": null,
+                "responseElements": {
+                    "RenewRole": "Success"
+                },
+                "additionalEventData": {
+                    "RenewedBy": "arn:aws:iam::907984961736:user/mforte",
+                    "RedirectTo": "https://us-east-2.console.aws.amazon.com/rds/?\u0026isauthcode=true"
+                },
+                "eventID": "d17c8d1b-0296-46bb-b88b-6f7adf93d848",
+                "eventType": "AwsConsoleSignIn",
+                "recipientAccountId": "958465719869"
+            },
+            "cloudType": "aws"
+        },
+        "triggeredBy": "mforte",
+        "investigateOptions": {
+            "searchId": "d0363688-6999-46a6-855c-b4f47c12e95f",
+            "startTs": 1581212773000,
+            "endTs": 1581385573000
+        }
+    },
+    {
+        "id": "P-48309",
+        "status": "open",
+        "firstSeen": 1581383251915,
+        "lastSeen": 1581383251915,
+        "alertTime": 1581383251915,
+        "eventOccurred": 1581381969000,
+        "policy": {
+            "policyId": "4ae14eed-5a19-4afb-b75e-59ee1aaa89ca",
+            "policyType": "audit_event",
+            "systemDefault": false,
+            "remediable": false
+        },
+        "riskDetail": {
+            "riskScore": {
+                "score": 0,
+                "maxScore": 0
+            },
+            "rating": "n_a",
+            "score": "n_a"
+        },
+        "resource": {
+            "id": "RenewRole",
+            "name": "RenewRole",
+            "account": "dss",
+            "accountId": "958465719869",
+            "cloudAccountGroups": [],
+            "region": "AWS Ohio",
+            "regionId": "us-east-2",
+            "resourceType": "AUDIT_EVENT",
+            "data": {
+                "eventVersion": "1.05",
+                "userIdentity": {
+                    "type": "AssumedRole",
+                    "principalId": "AROAIFVZC4MOUVW2QVKVO:mforte",
+                    "arn": "arn:aws:sts::958465719869:assumed-role/OrganizationAccountAccessRole/mforte",
+                    "accountId": "958465719869"
+                },
+                "eventTime": "2020-02-11T00:46:09Z",
+                "eventSource": "signin.amazonaws.com",
+                "eventName": "RenewRole",
+                "awsRegion": "us-east-2",
+                "sourceIPAddress": "161.185.208.128",
+                "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36",
+                "requestParameters": null,
+                "responseElements": {
+                    "RenewRole": "Success"
+                },
+                "additionalEventData": {
+                    "RenewedBy": "arn:aws:iam::907984961736:user/mforte",
+                    "RedirectTo": "https://us-east-2.console.aws.amazon.com/rds/?\u0026isauthcode=true"
+                },
+                "eventID": "5a533fda-9456-4643-92b3-1f9854edc0ad",
+                "eventType": "AwsConsoleSignIn",
+                "recipientAccountId": "958465719869"
+            },
+            "cloudType": "aws"
+        },
+        "triggeredBy": "mforte",
+        "investigateOptions": {
+            "searchId": "d0363688-6999-46a6-855c-b4f47c12e95f",
+            "startTs": 1581209169000,
+            "endTs": 1581381969000
+        }
+    },
+    {
+        "id": "P-48308",
+        "status": "open",
+        "firstSeen": 1581379522759,
+        "lastSeen": 1581379522759,
+        "alertTime": 1581379522759,
+        "eventOccurred": 1581378365000,
+        "policy": {
+            "policyId": "4ae14eed-5a19-4afb-b75e-59ee1aaa89ca",
+            "policyType": "audit_event",
+            "systemDefault": false,
+            "remediable": false
+        },
+        "riskDetail": {
+            "riskScore": {
+                "score": 0,
+                "maxScore": 0
+            },
+            "rating": "n_a",
+            "score": "n_a"
+        },
+        "resource": {
+            "id": "RenewRole",
+            "name": "RenewRole",
+            "account": "dss",
+            "accountId": "958465719869",
+            "cloudAccountGroups": [],
+            "region": "AWS Ohio",
+            "regionId": "us-east-2",
+            "resourceType": "AUDIT_EVENT",
+            "data": {
+                "eventVersion": "1.05",
+                "userIdentity": {
+                    "type": "AssumedRole",
+                    "principalId": "AROAIFVZC4MOUVW2QVKVO:mforte",
+                    "arn": "arn:aws:sts::958465719869:assumed-role/OrganizationAccountAccessRole/mforte",
+                    "accountId": "958465719869"
+                },
+                "eventTime": "2020-02-10T23:46:05Z",
+                "eventSource": "signin.amazonaws.com",
+                "eventName": "RenewRole",
+                "awsRegion": "us-east-2",
+                "sourceIPAddress": "161.185.212.32",
+                "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36",
+                "requestParameters": null,
+                "responseElements": {
+                    "RenewRole": "Success"
+                },
+                "additionalEventData": {
+                    "RenewedBy": "arn:aws:iam::907984961736:user/mforte",
+                    "RedirectTo": "https://us-east-2.console.aws.amazon.com/rds/?\u0026isauthcode=true"
+                },
+                "eventID": "9cd7afdf-3465-4924-9c64-7a5259fc4d65",
+                "eventType": "AwsConsoleSignIn",
+                "recipientAccountId": "958465719869"
+            },
+            "cloudType": "aws"
+        },
+        "triggeredBy": "mforte",
+        "investigateOptions": {
+            "searchId": "d0363688-6999-46a6-855c-b4f47c12e95f",
+            "startTs": 1581205565000,
+            "endTs": 1581378365000
+        }
+    }
+]
+
+

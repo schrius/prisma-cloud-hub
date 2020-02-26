@@ -1,0 +1,47 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Resources: 
+  PrismaCloudReadOnlyRole: 
+    Type: "AWS::IAM::Role"
+    Properties: 
+      RoleName: "PrismaCloudReadOnlyRole"
+      AssumeRolePolicyDocument: 
+        Version: "2012-10-17"
+        Statement: 
+          - 
+            Effect: Allow
+            Principal: 
+              AWS: "arn:aws:iam::188619942792:root"
+            Action: 
+              - "sts:AssumeRole"
+            Condition:
+              StringEquals:
+                "sts:ExternalId": "FrenchEllaReturns"
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/SecurityAudit
+  RolePolicies: 
+    Type: "AWS::IAM::Policy"
+    Properties: 
+      PolicyName: "PrismaCloud-IAM-ReadOnly-Policy"
+      PolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+        - Action:
+          - apigateway:GET
+          - cognito-identity:ListTagsForResource
+          - cognito-idp:ListTagsForResource
+          - elasticbeanstalk:ListTagsForResource
+          - elasticfilesystem:DescribeTags
+          - glacier:GetVaultLock
+          - glacier:ListTagsForVault
+          - logs:GetLogEvents
+          - secretsmanager:DescribeSecret
+          - sns:GetSubscriptionAttributes
+          - sns:ListSubscriptions
+          - ssm:GetParameters
+          - ssm:ListTagsForResource
+          - sqs:SendMessage
+          - elasticmapreduce:ListSecurityConfigurations
+          Resource: "*"
+          Effect: Allow
+      Roles:
+        - !Ref PrismaCloudReadOnlyRole

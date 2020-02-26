@@ -1,0 +1,61 @@
+{
+    "resourceId": "i-12345",
+    "alertRuleName": "High Alert Notifications",
+    "accountName": "Test Account",
+    "hasFinding": true,
+    "resourceRegionId": "us-east-1",
+    "alertRemediationCli": null,
+    "source": "Prisma Cloud",
+    "cloudType": "aws",
+    "complianceMetadata": null,
+    "callbackUrl": "https://app3.prismacloud.io/alerts/overview?filters#alert.id=P-45208&timeType=to_now&timeUnit=epoch",
+    "alertId": "P-45208",
+    "policyLabels": [
+        "Network",
+        "Reconnaissance"
+    ],
+    "alertAttribution": null,
+    "severity": "high",
+    "policyName": "Internal port scan activity",
+    "resource": {
+        "data": {
+            "host": "1.2.3.4",
+            "vpc": "vpc-123",
+            "isPublic": false
+        },
+        "url": null,
+        "rrn": "rrn::instance:us-east-1:123456789012:i-123",
+        "accountId": "123456789012",
+        "regionId": "us-east-1",
+        "cloudType": "aws",
+        "resourceApiName": null,
+        "name": "App Server",
+        "additionalInfo": null,
+        "id": "i-123",
+        "region": "AWS Virginia",
+        "account": "Test Account",
+        "resourceType": "INSTANCE"
+    },
+    "resourceName": "App Server",
+    "riskRating": "B",
+    "resourceRegion": "AWS Virginia",
+    "policyDescription": "This policy identifies port scan attempts by inspecting network traffic between your cloud environments and other internal entities. Port scans are typically associated with reconnaissance attacks where a source host is attempting to scan a target host across multiple ports to discover what services are running or uncover vulnerabilities.",
+    "policyRecommendation": "1. The following port scan activities have been detected. We recommend that you investigate and close any ports not needed.\\n      2. This instance might be compromised. Please investigate further to uncover other unauthorized activity .",
+    "accountId": "123456789012",
+    "resourceConfig": {
+        "host": "1.2.3.4",
+        "vpc": "vpc-123",
+        "isPublic": false
+    },
+    "policyId": "123-00a8-5a82-a9d8-123",
+    "resourceCloudService": "Unavailable",
+    "alertTs": 1580496310255,
+    "findingSummary": {
+        "guard_duty_host": {
+            "rawDataUrl": "https://api.prismacloud.io/",
+            "count": 1,
+            "detailUrl": "https://api.prismacloud.io/"
+        }
+    },
+    "resourceType": "Instance"
+}

@@ -1,0 +1,140 @@
+{
+    "resourceId": "DeleteSubnet",
+    "alertRuleName": "prisma_high_alerts",
+    "accountName": "Test",
+    "hasFinding": false,
+    "resourceRegionId": "ap-northeast-1",
+    "alertRemediationCli": null,
+    "source": "Prisma Cloud",
+    "cloudType": "aws",
+    "complianceMetadata": null,
+    "callbackUrl": "https://app3.prismacloud.io/alerts/overview?filters#alert.id=P-47311&timeType=to_now&timeUnit=epoch",
+    "alertId": "P-47311",
+    "policyLabels": [
+        "AWS Policy"
+    ],
+    "alertAttribution": null,
+    "severity": "medium",
+    "policyName": "AWS Region Violation",
+    "resource": {
+        "data": {
+            "eventID": "123-1449-4953-b5b1-123",
+            "awsRegion": "ap-northeast-1",
+            "eventVersion": "1.05",
+            "responseElements": {
+                "_return": true,
+                "requestId": "123-343c-42a5-a1b7-123"
+            },
+            "sourceIPAddress": "1.2.3.4",
+            "eventSource": "ec2.amazonaws.com",
+            "requestParameters": {
+                "subnetId": "subnet-1cac9e47"
+            },
+            "resources": [
+                {
+                    "resourceName": "subnet-1cac9e47",
+                    "resourceType": "AWS::EC2::Subnet"
+                }
+            ],
+            "userAgent": "console.ec2.amazonaws.com",
+            "userIdentity": {
+                "accessKeyId": "123",
+                "sessionContext": {
+                    "webIdFederationData": {},
+                    "sessionIssuer": {
+                        "accountId": "123456789012",
+                        "principalId": "123",
+                        "type": "Role",
+                        "arn": "arn:aws:iam::123456789012:role/role",
+                        "userName": "AWSReserved"
+                    },
+                    "attributes": {
+                        "mfaAuthenticated": "false",
+                        "creationDate": "2020-02-04T15:50:48Z"
+                    }
+                },
+                "accountId": "123456789012",
+                "principalId": "123456789012:dathan@schrius",
+                "type": "AssumedRole",
+                "arn": "arn:aws:sts::123456789012:assumed-role/role"
+            },
+            "eventType": "AwsApiCall",
+            "requestID": "123-343c-42a5-a1b7-123",
+            "eventTime": "2020-02-04T15:51:27Z",
+            "eventName": "DeleteSubnet",
+            "recipientAccountId": "123456789012"
+        },
+        "url": null,
+        "rrn": null,
+        "cloudAccountGroups": [],
+        "accountId": "123456789012",
+        "resourceTags": null,
+        "regionId": "ap-northeast-1",
+        "cloudType": "aws",
+        "resourceApiName": null,
+        "name": "DeleteSubnet",
+        "additionalInfo": null,
+        "id": "DeleteSubnet",
+        "region": "AWS Tokyo",
+        "account": "Test",
+        "resourceType": "AUDIT_EVENT"
+    },
+    "resourceName": "DeleteSubnet",
+    "riskRating": "N/A",
+    "resourceRegion": "AWS Tokyo",
+    "policyDescription": "AWS Region Violation",
+    "policyRecommendation": "",
+    "accountId": "123456789012",
+    "resourceConfig": {
+        "eventID": "123-1449-4953-b5b1-123",
+        "awsRegion": "ap-northeast-1",
+        "eventVersion": "1.05",
+        "responseElements": {
+            "_return": true,
+            "requestId": "123-343c-42a5-a1b7-123"
+        },
+        "sourceIPAddress": "1.2.3.4",
+        "eventSource": "ec2.amazonaws.com",
+        "requestParameters": {
+            "subnetId": "subnet-1a1b"
+        },
+        "resources": [
+            {
+                "resourceName": "subnet-1a1b",
+                "resourceType": "AWS::EC2::Subnet"
+            }
+        ],
+        "userAgent": "console.ec2.amazonaws.com",
+        "userIdentity": {
+            "accessKeyId": "KEY",
+            "sessionContext": {
+                "webIdFederationData": {},
+                "sessionIssuer": {
+                    "accountId": "123456789012",
+                    "principalId": "id",
+                    "type": "Role",
+                    "arn": "arn:aws:iam::123456789012:role/schrius",
+                    "userName": "AWSReservedSSO"
+                },
+                "attributes": {
+                    "mfaAuthenticated": "false",
+                    "creationDate": "2020-02-04T15:50:48Z"
+                }
+            },
+            "accountId": "123456789012",
+            "principalId": "id:schrius@dathan",
+            "type": "AssumedRole",
+            "arn": "arn:aws:sts::123456789012:assumed-role/schrius"
+        },
+        "eventType": "AwsApiCall",
+        "requestID": "669f64c3-343c-42a5-a1b7-ec1612597961",
+        "eventTime": "2020-02-04T15:51:27Z",
+        "eventName": "DeleteSubnet",
+        "recipientAccountId": "123456789012"
+    },
+    "policyId": "123-5a19-4afb-b75e-123",
+    "resourceCloudService": "Unavailable",
+    "alertTs": 1580832706353,
+    "findingSummary": null,
+    "resourceType": "Audit Event"
+}

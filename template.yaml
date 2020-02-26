@@ -1,0 +1,237 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Prisma Cloud Remediation use AWS lambda to remediate cloud vulnerabilities and enforce complience
+
+Parameters:
+  ApplicationName:
+    Description: Name of the serverless application. It applys to all resources, including functions, SQS, SNS and so on.
+    Type: String
+    MinLength: 1
+    MaxLength: 32
+    AllowedPattern: "[a-zA-Z][a-zA-Z0-9]*"
+    Default: PrismaCloudRemediation
+    ConstraintDescription: Must begin with a letter and contain only alphanumeric characters.
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 30
+    MemorySize: 128
+    
+Resources:
+  PrismaAlertDispatcher:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: PrismaAlertDispatcher
+      CodeUri: remediation/dispatcher
+      Handler: dispatcher
+      Runtime: go1.x 
+      Role: !GetAtt PrismaAlertDispatcherRole.Arn
+      Events:
+        PrismaAlertSQSEvent:
+          Type: SQS 
+          Properties:
+            Queue: !GetAtt PrismaAlertSQS.Arn
+            BatchSize: 10
+      Environment:
+        Variables:
+            REGION: "us-east-1"
+  PrismaOnboarding:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: PrismaOnboarding
+      CodeUri: remediation/onboarding
+      Handler: onboarding
+      Runtime: go1.x 
+      Role: !GetAtt LambdaPrismaBasicRole.Arn
+      Environment:
+        Variables:
+            REGION: "us-east-1"
+
+  PrismaFalseAlertRemover:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: PrismaFalseAlertRemover
+      CodeUri: remediation/falsealert
+      Handler: remover
+      Runtime: go1.x 
+      Role: !GetAtt LambdaPrismaBasicRole.Arn
+
+  PrismaAlertNotification:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: PrismaAlertNotification
+      CodeUri: remediation/snsalert
+      Handler: snsalert
+      Runtime: go1.x 
+      Role: !GetAtt PrismaAlertSNSRole.Arn
+      Environment:
+        Variables:
+            SNS: !Ref PrismaAlertSNSMessage
+            REGION: "us-east-1"
+
+  PrismaVPCKiller:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: PrismaVPCKiller
+      CodeUri: remediation/vpckiller
+      Handler: vpckiller
+      Runtime: go1.x
+      Role: !GetAtt LambdaPrismaVPCKillerRole.Arn
+      Environment:
+        Variables:
+            REGION: "us-east-1"
+
+  PrismaScienceLogic:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: PrismaScienceLogic
+      CodeUri: remediation/sciencelogic/
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.7
+      Role: !GetAtt LambdaPrismaScienceLogicRole.Arn
+
+  PrismaAlertSQS:
+    Type: AWS::SQS::Queue
+    Properties: 
+      QueueName: PrismaAlertSQS
+
+  LambdaPrismaBasicRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: LambdaPrismaBasicRole
+      AssumeRolePolicyDocument: 
+        Version: "2012-10-17"
+        Statement: 
+          - 
+            Effect: "Allow"
+            Principal: 
+              Service:
+                - "lambda.amazonaws.com"
+            Action: 
+              - "sts:AssumeRole"
+      ManagedPolicyArns:
+        - "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+      Policies:
+        - PolicyName: PrismaVPCKillerAssumePolicy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: "Allow"
+                Action: "secretsmanager:GetSecretValue"
+                Resource: "arn:aws:secretsmanager:us-east-1:907984961736:secret:Prisma-4Duete"
+
+  LambdaPrismaScienceLogicRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: LambdaPrismaScienceLogicRole
+      AssumeRolePolicyDocument: 
+        Version: "2012-10-17"
+        Statement: 
+          - 
+            Effect: "Allow"
+            Principal: 
+              Service:
+                - "lambda.amazonaws.com"
+            Action: 
+              - "sts:AssumeRole"
+      ManagedPolicyArns:
+        - "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+        - "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"
+
+  LambdaPrismaVPCKillerRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: LambdaPrismaVPCKiller
+      AssumeRolePolicyDocument: 
+        Version: "2012-10-17"
+        Statement: 
+          - 
+            Effect: "Allow"
+            Principal: 
+              Service:
+                - "lambda.amazonaws.com"
+            Action: 
+              - "sts:AssumeRole"
+      ManagedPolicyArns:
+        - "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+      Policies:
+        - PolicyName: PrismaVPCKillerAssumePolicy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: "Allow"
+                Action: "sts:AssumeRole"
+                Resource: "arn:aws:iam::*:role/Prisma_VPC_Term_Role"
+
+  PrismaAlertDispatcherRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: PrismaAlertDispatcherRole
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement: 
+          - Effect: Allow
+            Principal: 
+              Service: 
+                - lambda.amazonaws.com
+            Action:
+              - sts:AssumeRole
+      ManagedPolicyArns:
+        - "arn:aws:iam::aws:policy/service-role/AWSLambdaSQSQueueExecutionRole"
+        - "arn:aws:iam::aws:policy/service-role/AWSLambdaRole"
+  PrismaAlertSNSRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: PrismaAlertSNSRole
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement: 
+          - Effect: Allow
+            Principal: 
+              Service: 
+                - lambda.amazonaws.com
+            Action:
+              - sts:AssumeRole
+      ManagedPolicyArns:
+        - "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+      Policies:
+        - PolicyName: SNSPublish
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+            - Effect: Allow
+              Action:
+              - sns:Publish
+              Resource: !Ref PrismaAlertSNSMessage
+
+  PrismaAlertSNSMessage:
+    Type: AWS::SNS::Topic
+    Properties:
+      TopicName: "PrismaAlert"
+      DisplayName: "Prisma Alert!"
+      Subscription: 
+        - Endpoint: '+1233456789'
+          Protocol: 'sms'
+
+Outputs:
+  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
+  # Find out more about other implicit resources you can reference within SAM
+  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
+  PrismaAlertDispatcher:
+    Description: "Prisma Alert dispatcher Lambda Function ARN"
+    Value: !GetAtt PrismaAlertDispatcher.Arn
+  PrismaFalseAlertRemover:
+    Description: "Prisma Alert False Alert Remover Lambda Function ARN"
+    Value: !GetAtt PrismaFalseAlertRemover.Arn
+  PrismaAlertNotification:
+    Description: "Prisma Alert Notification Lambda Function ARN"
+    Value: !GetAtt PrismaAlertNotification.Arn
+  PrismaVPCKiller:
+    Description: "Prisma VPCKiller Lambda Function ARN"
+    Value: !GetAtt PrismaVPCKiller.Arn
+  PrismaAlertSQS:
+    Description: "SQS triger Prisma Alert function"
+    Value: !GetAtt PrismaAlertSQS.Arn
+

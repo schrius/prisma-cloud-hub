@@ -1,0 +1,14 @@
+{
+    "resourceId": "i-test",
+    "alertRuleName": "High Alert Notifications",
+    "accountName": "Test1",
+    "resourceRegionId": "us-east-1",
+    "cloudType": "aws",
+    "alertId": "P-44729",
+    "severity": "high",
+    "policyName": "Test policy",
+    "resourceName": "TestResource",
+    "resourceRegion": "AWS Virginia",
+    "accountId": "618305550854",
+    "policyId": "123-5a19-4afb-b75e-123"
+}

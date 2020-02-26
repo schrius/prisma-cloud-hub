@@ -1,0 +1,98 @@
+{
+    "resourceId": "vpc-123",
+    "alertRuleName": "VPCKiller",
+    "accountName": "sbx",
+    "hasFinding": false,
+    "resourceRegionId": "us-east-1",
+    "alertRemediationCli": null,
+    "source": "Prisma Cloud",
+    "cloudType": "aws",
+    "complianceMetadata": null,
+    "callbackUrl": "https://app3.prismacloud.io/alerts/overview?filters#alert.id=P-123&timeType=to_now&timeUnit=epoch",
+    "alertId": "P-39425",
+    "policyLabels": [],
+    "alertAttribution": null,
+    "severity": "high",
+    "policyName": "VPCKiller",
+    "resource": {
+        "data": {
+            "instanceTenancy": "default",
+            "cidrBlock": "1.2.3.4/16",
+            "cidrBlockAssociationSet": [
+                {
+                    "cidrBlock": "1.2.0.0/16",
+                    "cidrBlockState": {
+                        "state": "associated"
+                    },
+                    "associationId": "vpc-cidr-assoc-123"
+                }
+            ],
+            "ownerId": "123456789012",
+            "tags": [
+                {
+                    "value": "ptest",
+                    "key": "Name"
+                }
+            ],
+            "default": false,
+            "isDefault": false,
+            "dhcpOptionsId": "dopt-3ea68a57",
+            "vpcId": "vpc-0f4ecf254b72aa546",
+            "state": "available",
+            "securityGroupCount": 1,
+            "subnetCount": 0,
+            "ipv6CidrBlockAssociationSet": []
+        },
+        "url": "https://console.aws.amazon.com/vpc/home?region=us-east-2#vpcs:filter=vpc-1234",
+        "rrn": "rrn::virtualNetwork:us-east-2:1234567:vpc-123",
+        "accountId": "123456789012",
+        "regionId": "us-east-2",
+        "cloudType": "aws",
+        "resourceApiName": "aws-ec2-describe-vpcs",
+        "name": "ptest",
+        "additionalInfo": null,
+        "id": "vpc-123",
+        "region": "AWS Ohio",
+        "account": "sbx",
+        "resourceType": "VIRTUAL_NETWORK"
+    },
+    "resourceName": "ptest",
+    "riskRating": "N/A",
+    "resourceRegion": "AWS Ohio",
+    "policyDescription": "No VPC allows in non US-Virginia Region",
+    "policyRecommendation": "",
+    "accountId": "123456789012",
+    "resourceConfig": {
+        "instanceTenancy": "default",
+        "cidrBlock": "1.2.0.0/16",
+        "cidrBlockAssociationSet": [
+            {
+                "cidrBlock": "1.2.0.0/16",
+                "cidrBlockState": {
+                    "state": "associated"
+                },
+                "associationId": "vpc-cidr-assoc-123"
+            }
+        ],
+        "ownerId": "123456789012",
+        "tags": [
+            {
+                "value": "ptest",
+                "key": "Name"
+            }
+        ],
+        "default": false,
+        "isDefault": false,
+        "dhcpOptionsId": "dopt-3ea68a57",
+        "vpcId": "vpc-123",
+        "state": "available",
+        "securityGroupCount": 1,
+        "subnetCount": 0,
+        "ipv6CidrBlockAssociationSet": []
+    },
+    "policyId": "123-acb5-4ff7-92bc-123",
+    "resourceCloudService": "Amazon VPC",
+    "alertTs": 1574195850311,
+    "findingSummary": null,
+    "resourceType": "Virtual Network"
+}

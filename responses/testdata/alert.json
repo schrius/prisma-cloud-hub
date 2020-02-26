@@ -1,0 +1,67 @@
+[
+    {
+        "id": "P-48311",
+        "status": "open",
+        "firstSeen": 1581390395080,
+        "lastSeen": 1581390395080,
+        "alertTime": 1581390395080,
+        "eventOccurred": 1581389178000,
+        "policy": {
+            "policyId": "4ae143ed-1234567890-4afb-b75e-1234567890",
+            "policyType": "audit_event",
+            "systemDefault": false,
+            "remediable": false
+        },
+        "riskDetail": {
+            "riskScore": {
+                "score": 0,
+                "maxScore": 0
+            },
+            "rating": "n_a",
+            "score": "n_a"
+        },
+        "resource": {
+            "id": "RenewRole",
+            "name": "RenewRole",
+            "account": "test",
+            "accountId": "123456789012",
+            "cloudAccountGroups": [],
+            "region": "AWS Ohio",
+            "regionId": "us-east-2",
+            "resourceType": "AUDIT_EVENT",
+            "data": {
+                "eventVersion": "1.05",
+                "userIdentity": {
+                    "type": "AssumedRole",
+                    "principalId": "123456789012:ffff",
+                    "arn": "arn:aws:sts::123456789012:assumed-role/Role/testROle",
+                    "accountId": "123456789012"
+                },
+                "eventTime": "2020-02-11T02:46:18Z",
+                "eventSource": "signin.amazonaws.com",
+                "eventName": "RenewRole",
+                "awsRegion": "us-east-2",
+                "sourceIPAddress": "1.2.3.4",
+                "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36",
+                "requestParameters": null,
+                "responseElements": {
+                    "RenewRole": "Success"
+                },
+                "additionalEventData": {
+                    "RenewedBy": "arn:aws:iam::123456789012:user/testuser",
+                    "RedirectTo": "https://us-east-2.console.aws.amazon.com/rds/?\u0026isauthcode=true"
+                },
+                "eventID": "123-123-123-123-1234",
+                "eventType": "AwsConsoleSignIn",
+                "recipientAccountId": "123456789012"
+            },
+            "cloudType": "aws"
+        },
+        "triggeredBy": "someone",
+        "investigateOptions": {
+            "searchId": "123-123-123-123-123",
+            "startTs": 1581216378000,
+            "endTs": 1581389178000
+        }
+    }
+]
