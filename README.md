@@ -1,3 +1,7 @@
+[![Go Report Card](https://goreportcard.com/badge/github.com/schrius/prisma-cloud-hub)](https://goreportcard.com/report/github.com/schrius/prisma-cloud-hub)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+![Go](https://github.com/schrius/prisma-cloud-hub/workflows/Go/badge.svg)
+
 # Prisma Cloud Remediation
 Prisma cloud remediation is an application build with AWS SAM.
 A SQS is integrated with Prisma to receive alert, and distribute

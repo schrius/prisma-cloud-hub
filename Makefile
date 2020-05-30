@@ -12,11 +12,11 @@ all: deps test clean build
 
 # test all packages
 test:
-	$(GOTEST) ./...
+	$(GOTEST) -v ./...
 
 # get all packages
 deps:
-	$(GOGET) -u ./...
+	$(GOGET) -v ./...
 
 # static analysis
 static:
