@@ -4,16 +4,15 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/aws/aws-lambda-go/lambda"
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/aws/session"
-	"github.com/aws/aws-sdk-go/service/secretsmanager"
-
 	"github.com/CityOfNewYork/prisma-cloud-remediation/api"
 	"github.com/CityOfNewYork/prisma-cloud-remediation/api/prisma"
 	"github.com/CityOfNewYork/prisma-cloud-remediation/api/prisma/alert"
 	"github.com/CityOfNewYork/prisma-cloud-remediation/api/prisma/prismaiface"
 	"github.com/CityOfNewYork/prisma-cloud-remediation/events"
+	"github.com/aws/aws-lambda-go/lambda"
+	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/session"
+	"github.com/aws/aws-sdk-go/service/secretsmanager"
 )
 
 func login(svc *secretsmanager.SecretsManager) (prismaiface.PrismaAPI, error) {
